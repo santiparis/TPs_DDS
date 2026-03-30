@@ -1,0 +1,72 @@
+@startuml macowins
+class Prenda {
+  tipo
+  precioBase
+  estado
+
+  precio()
+}
+
+class Nueva {
+  modificacion(precioBase)
+}
+
+class Promocion {
+  valor
+
+  modificacion(precioBase)
+}
+
+class Liquidacion {
+  modificacion(precioBase)
+}
+
+interface Estado {
+  modificacion(precioBase)
+}
+
+class PrendaConCantidad {
+  prenda
+  cantidad
+
+  total()
+}
+
+class Venta {
+  prendas
+  fecha
+  
+  agregarPrenda(prendaConCantidad)
+  monto()
+}
+
+class VentaConTarjeta {
+  coeficiente
+  cuotas
+
+  monto()
+  recargo()
+}
+
+class Empresa {
+  ventas
+
+  agregarVenta(venta)
+  gananciasDelDia(fechaSeleccionada)
+}
+
+Nueva ..|> Estado
+Promocion ..|> Estado
+Liquidacion ..|> Estado
+
+Prenda --> Estado
+
+VentaConTarjeta --|> Venta
+
+PrendaConCantidad --> Prenda
+
+Venta --> "*" PrendaConCantidad
+
+Empresa --> "*" Venta
+
+@enduml
