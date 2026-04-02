@@ -25,7 +25,7 @@ interface Estado {
   modificacion(precioBase)
 }
 
-class PrendaConCantidad {
+class ItemPrenda {
   prenda
   cantidad
 
@@ -36,7 +36,7 @@ class Venta {
   prendas
   fecha
   
-  agregarPrenda(prendaConCantidad)
+  agregarPrenda(itemPrenda)
   monto()
 }
 
@@ -63,9 +63,9 @@ Prenda --> Estado
 
 VentaConTarjeta --|> Venta
 
-PrendaConCantidad --> Prenda
+ItemPrenda --> Prenda
 
-Venta --> "*" PrendaConCantidad
+Venta --> "*" ItemPrenda
 
 Empresa --> "*" Venta
 
